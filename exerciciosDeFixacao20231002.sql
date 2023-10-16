@@ -28,3 +28,18 @@ SELECT produto, ROUND(preco, 2) AS preco_arredondado FROM produtos;
 SELECT produto, ABS(quantidade) AS quantidade_absoluta FROM produtos;
 
 SELECT AVG(preco) AS media_precos FROM produtos;
+
+CREATE TABLE eventos (
+    data_evento DATE
+);
+
+INSERT INTO eventos (data_evento)
+VALUES ('2023-10-09'), ('2023-10-10'), ('2023-10-15');
+
+INSERT INTO eventos (data_evento) VALUES (NOW());
+
+SELECT DATEDIFF('2023-10-15', '2023-10-09') AS dias_entre_datas FROM eventos;
+
+SELECT data_evento, DAYNAME(data_evento) AS dia_da_semana FROM eventos;
+
+
