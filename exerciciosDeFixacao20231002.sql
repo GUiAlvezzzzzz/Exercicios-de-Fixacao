@@ -68,5 +68,32 @@ SELECT produto, preco FROM produtos WHERE preco = (SELECT MIN(preco) FROM produt
 
 SELECT SUM(IF(quantidade > 0, preco * quantidade, 0)) AS soma_total_em_estoque FROM produtos;
 
+CREATE FUNCTION FATORIAL(n INT)
+RETURNS INT
+BEGIN
+    IF n <= 1 THEN
+        RETURN 1;
+    ELSE
+        RETURN n * FATORIAL(n - 1);
+    END IF;
+END;
+
+CREATE FUNCTION EXPONENCIAL(base DECIMAL, expoente INT)
+RETURNS DECIMAL(10, 2)
+BEGIN
+    RETURN POW(base, expoente);
+END;
+
+CREATE FUNCTION PALINDROMO(palavra VARCHAR(50))
+RETURNS INT
+BEGIN
+    DECLARE reversed_word VARCHAR(50);
+    SET reversed_word = REVERSE(palavra);
+    IF palavra = reversed_word THEN
+        RETURN 1;
+    ELSE
+        RETURN 0;
+    END IF;
+END;
 
 
