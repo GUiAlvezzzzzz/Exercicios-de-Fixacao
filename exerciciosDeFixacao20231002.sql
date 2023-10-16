@@ -60,4 +60,13 @@ END;
 
 SELECT produto, preco, quantidade, TOTAL_VALOR(preco, quantidade) AS valor_total FROM produtos;
 
+SELECT COUNT(*) AS total_produtos FROM produtos;
+
+SELECT COUNT(*) AS total_produtos FROM produtos;
+
+SELECT produto, preco FROM produtos WHERE preco = (SELECT MIN(preco) FROM produtos);
+
+SELECT SUM(IF(quantidade > 0, preco * quantidade, 0)) AS soma_total_em_estoque FROM produtos;
+
+
 
