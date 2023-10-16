@@ -109,3 +109,16 @@ INSERT INTO Livro_Autor (id_livro, id_autor) VALUES
 (18, 10),
 (19, 9),
 (20, 4);
+
+DELIMITER //
+CREATE FUNCTION total_livros_por_genero(nome_genero VARCHAR(255)) RETURNS INT
+BEGIN
+    DECLARE total INT;
+    
+    SELECT COUNT(*) INTO total
+    FROM Livro
+    WHERE id_genero = (SELECT id FROM Genero WHERE nome_genero = nome_genero);
+    
+    RETURN total;
+END //
+DELIMITER ;
